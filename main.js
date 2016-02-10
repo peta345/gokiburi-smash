@@ -49,16 +49,21 @@
 			numText.moveTo(10, 10);
 			scene.addChild(numText);
 
-			//虫の数をセット
-			game.bugNum = BUG_MAX_NUM;
+			//シーン切り替えの処理
+			scene.onenter = function(){
+				//frame set
+				game.frame = 0;
 
-			//虫の生成
-			for (var i=0; i<BUG_MAX_NUM; ++i){
-				var gokiburi = new Gokiburi();
-				gokiburi.moveTo(randfloat(0, SCREEN_WIDTH-BUG_WIDTH), randfloat(0, SCREEN_HEIGHT-BUG_HEIGHT));
-				scene.addChild(gokiburi);
-
-			}
+				//bug 数set
+				game.bugNum = BUG_MAX_NUM;
+				
+				//虫を生成
+				for(var i=0;i<BUG_MAX_NUM; ++i){
+					var gokiburi = new Gokiburi();
+					gokiburi.moveTo(randfloat(0, SCREEN_WIDTH-BUG_WIDTH), randfloat(0, SCREEN_HEIGHT-BUG_HEIGHT));
+					scene.addChild(gokiburi);
+				}
+			};
 
 			//シーン更新時の処理
 			scene.onenterframe = function(){
