@@ -42,6 +42,13 @@
 			bg.image = game.assets[FIELD_IMAGE];
 			scene.addChild(bg);
 
+			// 残りの数表示用のラベル生成
+			var numText = new Label("");
+			numText.font = "18px 'Meiryo', 'メイリオ', 'ヒラギノ角ゴ Pro W3', 'sans-serif'";
+			numText.color = "black";
+			numText.moveTo(10, 10);
+			scene.addChild(numText);
+
 			//虫の数をセット
 			game.bugNum = BUG_MAX_NUM;
 
@@ -55,6 +62,10 @@
 
 			//シーン更新時の処理
 			scene.onenterframe = function(){
+				//残りの表示用ラベル更新
+				numText.text = "残り: " + game.bugNum + "匹";
+
+
 				//clear chexk
 				if(game.bugNum <= 0){
 					//game endx
